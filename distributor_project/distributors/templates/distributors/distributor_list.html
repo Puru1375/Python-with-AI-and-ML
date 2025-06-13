@@ -1,0 +1,24 @@
+{% extends 'distributors/base.html' %}
+
+{% block title %}Distributor List{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>All Registered Distributors</h2>
+        <a href="{% url 'register' %}" class="btn btn-primary">Register New Distributor</a>
+    </div>
+
+    <div class="list-group">
+        {% for distributor in distributors %}
+            <a href="{% url 'profile_view' pk=distributor.pk %}" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ distributor.company_name }}</h5>
+                    <small>{{ distributor.registration_date|timesince }} ago</small>
+                </div>
+                <p class="mb-1">Contact: {{ distributor.contact_person }} ({{ distributor.email }})</p>
+            </a>
+        {% empty %}
+            <p class="text-center">No distributors have registered yet.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

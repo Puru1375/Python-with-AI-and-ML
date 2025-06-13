@@ -1,0 +1,25 @@
+<!-- distributors/templates/distributors/register_success.html -->
+{% extends 'distributors/base.html' %}
+
+{% block title %}Registration Successful{% endblock %}
+
+{% block content %}
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Registration Successful!</h4>
+        <p>Thank you for registering. Your information has been submitted.</p>
+        <hr>
+        <p class="mb-0">You can now view your entry in the main list.</p>
+    </div>
+
+    <!-- 👇 THIS IS THE NEW BUTTON WE ARE ADDING 👇 -->
+    <a href="{% url 'distributor_list' %}" class="btn btn-primary mt-3">
+        <i class="fas fa-home"></i> View All Distributors (Homepage)
+    </a>
+
+    <!-- We can keep the alert if you like, or remove it now that we have a button -->
+    <script>
+        window.onload = function() {
+            alert("Registration Successful! Welcome.");
+        };
+    </script>
+{% endblock %}

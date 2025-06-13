@@ -1,0 +1,19 @@
+<!-- distributors/templates/distributors/register.html -->
+{% extends 'distributors/base.html' %}
+
+{% block title %}Distributor Registration{% endblock %}
+
+{% block content %}
+    <h2>Register as a New Distributor</h2>
+    <p>Fill out the form below to get started.</p>
+    <hr>
+
+    <form method="post" novalidate>
+        {% csrf_token %} <!-- IMPORTANT: Security token -->
+
+        <!-- Render the form fields -->
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary mt-3">Register</button>
+    </form>
+{% endblock %}

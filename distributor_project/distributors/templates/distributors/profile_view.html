@@ -1,0 +1,23 @@
+<!-- distributors/templates/distributors/profile_view.html -->
+{% extends 'distributors/base.html' %}
+
+{% block title %}{{ distributor.company_name }}'s Profile{% endblock %}
+
+{% block content %}
+    <h2>Profile: {{ distributor.company_name }}</h2>
+    <div class="card">
+        <div class="card-body">
+            <p><strong>Contact Person:</strong> {{ distributor.contact_person }}</p>
+            <p><strong>Email:</strong> {{ distributor.email }}</p>
+            <p><strong>Phone:</strong> {{ distributor.phone_number }}</p>
+            <p><strong>Address:</strong> {{ distributor.address }}</p>
+            <p><strong>Member Since:</strong> {{ distributor.registration_date|date:"F d, Y" }}</p>
+            <p><strong>Status:</strong> {% if distributor.is_active %}Active{% else %}Inactive{% endif %}</p>
+        </div>
+        <div class="card-footer text-end">
+            <!-- 👇 WE ARE ADDING THE NEW BUTTON HERE 👇 -->
+            <a href="{% url 'distributor_list' %}" class="btn btn-secondary">Back to List</a>
+            <a href="{% url 'profile_update' pk=distributor.pk %}" class="btn btn-warning ms-2">Update Information</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'distributors/base.html' %}
+
+{% block title %}Update Profile{% endblock %}
+
+{% block content %}
+    <h2>Update Information for {{ distributor.company_name }}</h2>
+    <hr>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Save Changes</button>
+        <a href="{% url 'profile_view' pk=distributor.pk %}" class="btn btn-secondary">Cancel</a>
+    </form>
+{% endblock %}
